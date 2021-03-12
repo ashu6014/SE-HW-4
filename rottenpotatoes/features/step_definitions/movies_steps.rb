@@ -9,6 +9,10 @@ Then /^the director of "([^"]*)" should be "([^"]*)"$/ do |arg1, arg2|
    Movie.find_by_title(arg1).director == arg2
 end
 
+Then /(.*) seed movies should exist/ do | n_seeds |
+  Movie.count.should be n_seeds.to_i
+end
+
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|    #step definition for sorting tests     
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
