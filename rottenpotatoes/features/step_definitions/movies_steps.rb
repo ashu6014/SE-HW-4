@@ -5,8 +5,13 @@ Given /the following movies exist/ do |movies_table|
   end
 end
 
-Then /^the director of "([^"]*)" should be "([^"]*)"$/ do |arg1, arg2|
-   Movie.find_by_title(arg1).director == arg2
+# Then /^the director of "([^"]*)" should be "([^"]*)"$/ do |arg1, arg2|
+#   Movie.find_by_title(arg1).director == arg2
+# end
+
+Then /the director of "(.*)" should be "(.*)"/ do |movie_name, director_name|
+  movie = Movie.find_by(title: movie_name)
+  expect(movie.director).to eq director_name
 end
 
 Then /(.*) seed movies should exist/ do | n_seeds |
